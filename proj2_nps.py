@@ -331,13 +331,16 @@ if __name__ == "__main__":
                 elif num == 'back':
                     break
                 elif valid_num(num, len(list_ns)):
-                    dict_places = get_nearby_places(list_ns[int(num)-1])
-                    title = 'Places near ' + list_ns[int(num)-1].name
-                    print('-' * len(title))
-                    print(title)
-                    print('-' * len(title))                    
-                    print_nearby_places(dict_places)
-                    
+                    if list_ns[int(num)-1].zipcode == "no zipcode":
+                        print("[Error] The park you chose has no zipcode.")
+                        print()
+                    else: 
+                        dict_places = get_nearby_places(list_ns[int(num)-1])
+                        title = 'Places near ' + list_ns[int(num)-1].name
+                        print('-' * len(title))
+                        print(title)
+                        print('-' * len(title))                    
+                        print_nearby_places(dict_places)
                 else:
                     print('[Error] Invalid input')
                     print('')
